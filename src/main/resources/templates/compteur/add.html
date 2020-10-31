@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Attribution Compteur</title>
+    <link rel="stylesheet" th:href="@{../../css/bootstrap.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card col-md-6 offset-md-3 mt-5">
+        <div class="card-header bg-primary text-white">Attribution d'un Compteur pour un Abonnement</div>
+        <div class="card-body">
+
+            <form action="/Compteur/save" method="post">
+
+                    <div class="form-group">
+                        <label class="control-label">Date Attribution</label>
+                        <input class="form-control" id="dateAbonnement" name="dateAbonnement" required type="date"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Description</label>
+                        <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                    </div>
+                <div class="form-group">
+                    <label class="control-label">Client</label>
+                    <select class="form-control" id="abonnement" name="abonnement">
+                        <option th:each="c:${abonnements}" th:text="${c.client.personne.prenom }+' '+${c.client.personne.nom}" th:value="${c.id}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary" name="ajouter" type="submit"
+                           value="Ajouter"/>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
